@@ -60,6 +60,7 @@ Open source Microsoft Fluent icons preview website. Rebuilt from Nuxt/Vue to **A
 ├── astro.config.mjs          — Astro + Preact + Tailwind v4 config
 ├── tsconfig.json             — TypeScript strict config (extends astro/tsconfigs/strict)
 └── package.json
+```
 
 ## Commands
 
