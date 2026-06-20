@@ -1,11 +1,20 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Hero from '../components/Hero.astro'
+import Navbar from '../components/Navbar.tsx'
+import IconGrid from '../components/IconGrid.tsx'
+import FavoritesSidebar from '../components/FavoritesSidebar.tsx'
+import PreviewSidebar from '../components/PreviewSidebar.tsx'
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout>
+  <main class="flex min-h-screen">
+    <FavoritesSidebar client:load />
+    <section class="flex-grow flex flex-col min-w-0">
+      <Hero />
+      <Navbar client:load />
+      <IconGrid client:load />
+    </section>
+    <PreviewSidebar client:load />
+  </main>
+</BaseLayout>

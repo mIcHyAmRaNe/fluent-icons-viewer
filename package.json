@@ -12,6 +12,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.4.7"
+    "@astrojs/preact": "^5.1.5",
+    "@preact/signals": "^2.9.2",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^6.4.7",
+    "jszip": "^3.10.1",
+    "preact": "^10.29.2",
+    "prismjs": "^1.30.0",
+    "tailwindcss": "^4.3.1"
   }
 }
