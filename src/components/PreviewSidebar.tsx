@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'preact/hooks'
 import { useSignal, useSignalEffect } from '@preact/signals'
-import { selectedIcon, theme, isAFavorite, favoriteIcon, unFavoriteIcon } from '../lib/store'
+import { selectedIcon, theme, isAFavorite, favoriteIcon, unFavoriteIcon, setSelectedIcon } from '../lib/store'
 import type { IconData } from '../lib/store'
 import { getSvg, getSvgWithGradient, svgToComponent, svgToImage, downloadUrl } from '../lib/iconManager'
 import SvgIcon from './SvgIcon'
@@ -130,17 +130,28 @@ export default function PreviewSidebar() {
   const fav = icon.value ? isAFavorite(icon.value.componentName) : false
 
   return (
-    <aside class="editor-sidebar">
+    <aside class={`editor-sidebar ${icon.value ? 'editor-sidebar--open' : ''}`}>
       <div class="h-[75px] border-b border-surface1 flex items-center justify-between px-4">
-        <div class="text-sm font-medium truncate">{formattedName}</div>
-        {icon.value && (
-          <button onClick={handleFavorite} class="focus:outline-none p-2 rounded-full focus:bg-mantle hover:bg-mantle cursor-pointer transition-colors duration-200" aria-label="Favorite">
-            {fav ? (
-              <SvgIcon path="fluent/ic_fluent_heart_24_filled.svg" size={20} class="text-red" />
-            ) : (
-              <SvgIcon path="fluent/ic_fluent_heart_24_regular.svg" size={20} class="text-overlay1" />
-            )}
+        <div class="flex items-center gap-2 min-w-0">
+          <button
+            onClick={() => setSelectedIcon(null)}
+            class="md:hidden p-1.5 rounded-lg hover:bg-mantle cursor-pointer transition-colors duration-200 flex-shrink-0"
+            aria-label="Close preview"
+          >
+            <svg class="h-5 w-5 text-overlay1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
+          <div class="text-sm font-medium truncate">{formattedName}</div>
+        </div>
+        {icon.value && (
+          <div class="flex items-center gap-1 flex-shrink-0">
+            <button onClick={handleFavorite} class="focus:outline-none p-2 rounded-full focus:bg-mantle hover:bg-mantle cursor-pointer transition-colors duration-200" aria-label="Favorite">
+              {fav ? (
+                <SvgIcon path="fluent/ic_fluent_heart_24_filled.svg" size={20} class="text-red" />
+              ) : (
+                <SvgIcon path="fluent/ic_fluent_heart_24_regular.svg" size={20} class="text-overlay1" />
+              )}
+            </button>
+          </div>
         )}
       </div>
       <div class="h-64">

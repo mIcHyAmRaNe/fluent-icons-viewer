@@ -239,6 +239,99 @@ svg:not(.main-stop, .alt-stop, .st0, .st1, .st2, .st3, .st4) {
   border: none;
 }
 
+/* ── Responsive — Mobile & Tablet ── */
+
+/* Tablets (≤ 1024px) */
+@media (max-width: 1024px) {
+  .editor-sidebar {
+    width: 320px;
+  }
+  .favorites-sidebar.open {
+    width: 240px;
+  }
+}
+
+/* Mobile (≤ 767px) */
+@media (max-width: 767px) {
+  /* Preview sidebar → full-screen overlay */
+  .editor-sidebar {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    width: 100% !important;
+    height: 100dvh;
+    border: none;
+    border-radius: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  .editor-sidebar.editor-sidebar--open {
+    transform: translateX(0);
+  }
+
+  /* Favorites sidebar → full-screen overlay */
+  .favorites-sidebar.open {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    width: 100% !important;
+    height: 100dvh;
+    border: none;
+  }
+
+  /* Navbar responsive */
+  .navbar-inner {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 12px !important;
+  }
+  .navbar-inner .search-wrap {
+    order: -1;
+    flex: 1 1 100%;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding: 32px 16px !important;
+  }
+  .hero-section h1 {
+    font-size: 2rem !important;
+  }
+  .hero-section p.text-lg {
+    font-size: 0.9rem !important;
+  }
+
+  /* Grid */
+  .icon-grid-container {
+    padding: 12px !important;
+  }
+  .icon-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+}
+
+/* Phones (≤ 480px) */
+@media (max-width: 480px) {
+  .icon-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+}
+
+/* Buy Me a Coffee widget responsive */
+@media (max-width: 767px) {
+  .bmc-modal,
+  [class*="bmc-modal"],
+  iframe[src*="buymeacoffee"],
+  div[class*="bmc"] iframe {
+    max-width: 75vw !important;
+    max-height: 60vh !important;
+    transform: scale(0.6);
+    transform-origin: center center;
+  }
+}
+
 .dark #bmc-wbtn {
   background-color: #c6a0f6 !important;
 }

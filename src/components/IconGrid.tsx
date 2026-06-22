@@ -45,9 +45,9 @@ export default function IconGrid() {
 
   return (
     <div class="flex-grow overflow-y-auto">
-      <div class="container mx-auto p-8">
+      <div class="icon-grid-container container mx-auto p-4 sm:p-6 lg:p-8">
         {visible.length > 0 ? (
-          <div class="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+          <div class="icon-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
             {visible.map(ic => <IconCard key={ic.name} icon={ic} />)}
           </div>
         ) : (
